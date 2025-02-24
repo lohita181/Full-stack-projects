@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe Styling Results</title>
+    <link rel="stylesheet" href="result.css">
+    <link href="https://fonts.googleapis.com/css2?family=Snippet&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>My Wardrobe</h1>
+    <img src="images/logo.png" alt="logo" class="logo">
+    
+    <div class="container">
+        <h4 class="topic">Your wardrobe our styling</h4>
+
+        <!-- Styling List Container -->
+        <div id="styling-list"></div>
+    </div>
+
+    <script>
+        const retrievedStylingList = JSON.parse(localStorage.getItem('stylingList'));
+        const stylingListContainer = document.getElementById('styling-list');
+        let i =1;
+        // Check if there are any items in the styling list
+        if (retrievedStylingList && retrievedStylingList.length > 0) {
+            // Loop through each outfit combination
+            retrievedStylingList.forEach(item => {
+                // Create a div for each combination
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('styling-item');
+
+                // Add content for top and bottom
+                itemDiv.innerHTML = `<h1><strong>Styling ${i}: </strong></h1><br><h3>Top:${item.top}</h3>
+                    <h3>Bottom: ${item.bottom}</h3><br>`;
+                i++;
+                // Append the item to the styling list container
+                stylingListContainer.appendChild(itemDiv);
+            });
+        } else {
+            // Display a message if there are no items in the list
+            stylingListContainer.innerHTML = "<p>No styling combinations found.</p>";
+        }
+    </script>
+    
+</body>
+</html>

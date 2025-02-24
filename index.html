@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Snippet&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <img src="images/logo.png" alt="logo" class="logo">
+    <h1 class="hfirst">WELCOME</h1> 
+    <h1 class="hsecond">TO</h1> 
+    <h1 class="hend"><span>STYLE </span>FORCAST</h1>
+    <div class="container">
+        <form id="loginForm">
+        <input type="text" required placeholder="User Name" class="username" id="username">
+        <input type="password" required placeholder="Password" id="password">
+        <button class="firstbtn" type="submit">sign In</button>
+        </form>
+
+        <p>or</p>
+        <p><strong>Don't Have An Account?</strong></p>
+        <button onclick="window.location.href='signup.html'">sign Up</button>
+    </div>
+    <script>
+        // Hardcoded credentials
+        const USERNAME = "testuser";
+        const PASSWORD = "lohita_18";
+
+        // Login form submission handler
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get the entered username and password
+            const enteredUsername = document.getElementById("username").value;
+            const enteredPassword = document.getElementById("password").value;
+
+            // Authenticate
+            if (enteredUsername === USERNAME && enteredPassword === PASSWORD) {
+                // Redirect to dashboard
+                window.location.href = "about.html";
+            } else {
+                // Show error message
+                document.getElementById("errorMessage").textContent = "Invalid username or password.";
+            }
+        });
+    </script>
+</body>
+</html>
